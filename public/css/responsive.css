@@ -1,0 +1,237 @@
+@media (max-width: 991px) {
+  .row-eq-height {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-item {
+    width: 50%;
+  }
+  .grid-another-width {
+    width: 50%;
+  }
+  .gallery-section {
+    text-align: center;
+  }
+  .gallery-filter {
+    text-align: center;
+  }
+  .upcoming-event .fornt-part .singer {
+    font-size: 19px;
+  }
+  .upcoming-event .fornt-part .date {
+    font-size: 16px;
+  }
+  .mmenu-list li .indicator {
+    display: block;
+  }
+
+  .shop-icon {
+    margin-top: 12px;
+  }
+  .menu-area .mmenu-list > li > a {
+    padding: 13px 0px 13px 5px;
+  }
+  .menu-area {
+    padding-bottom: 10px;
+  }
+
+  #easy-menu {
+    width: calc(100% - 40px);
+  }
+  .sidebar {
+    margin-top: 80px;
+  }
+  .event-detail-content .image img {
+    width: 100%;
+  }
+  .event-detail-content .col-md-6.pdr0 {
+    padding-right: 15px;
+  }
+  .event-detail {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+  .musica-navigation-pagination {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .shop-detail {
+    display: block;
+  }
+  .shop-detail .jq-ry-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .shop-detail .item-quantity {
+    display: inline-block;
+  }
+  .shop-detail .shop-item {
+    display: block;
+    width: 100%;
+  }
+  .shop-detail .shop-detail-text {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .shop-detail .category-tag ul li {
+    text-align: left;
+  }
+  .related-product .section-heading {
+    text-align: center;
+  }
+  .logo-brand {
+    margin-top: 17px;
+  }
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
+
+  .mobile-background-nav {
+    display: block;
+  }
+  .musica-header {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .album-item img,
+  .blog-post img {
+    width: 100%;
+  }
+  .upcoming-event .fornt-part .date,
+  .upcoming-event .fornt-part .singer,
+  .upcoming-event .fornt-part .venue,
+  .upcoming-event .fornt-part .detail {
+    width: 50%;
+    display: block;
+    float: left;
+    min-height: 50px;
+    text-align: center;
+    padding: 15px 5px;
+  }
+  .upcoming-event .fornt-part .musica-button-two {
+    min-width: auto;
+    padding: 8px 20px;
+  }
+  .upcoming-event .back-part .event-counter {
+    max-width: 220px;
+  }
+  .event-section {
+    text-align: center;
+  }
+  .countdown-show4 .countdown-section,
+  .countdown-show3 .countdown-section,
+  .countdown-show2 .countdown-section,
+  .countdown-show5 .countdown-section {
+    width: 70px;
+  }
+  .countdown-amount {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .footer-menu ul li {
+    padding: 8px 10px;
+  }
+  .blog-detail-text {
+    text-align: left;
+  }
+  .blog-detail-text .social-icon {
+    text-align: left;
+  }
+  .banner-area {
+    padding: 120px 0;
+  }
+  .comment-form .row .single-input {
+    flex: none;
+    width: 100%;
+    display: block;
+  }
+  .comment-form .row {
+    display: block;
+  }
+  .sidebar-widget {
+    padding: 60px 20px 60px 20px;
+  }
+  .product-name-thumb {
+    display: block;
+    text-align: center;
+    position: relative;
+  }
+  .product-name-thumb > div {
+    display: block;
+    width: 100%;
+  }
+  .product-name-thumb .cart-close {
+    position: absolute;
+    left: 0;
+    text-align: left;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+  }
+  .product-name-thumb .cart-close i {
+    cursor: pointer;
+    font-size: 22px;
+  }
+  .musica-audio-player .jp-interface .audio-playlist,
+  .musica-audio-player .jp-volume-controls {
+    display: none;
+  }
+  .musica-audio-player .jp-video .jp-controls {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .musica-audio-player .jp-gui {
+    width: 100%;
+  }
+  .musica-audio-player .jp-interface .jp-duration {
+    float: right;
+    text-align: right;
+  }
+  .musica-audio-player .jp-interface .jp-progress {
+    width: calc(100% - 50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .blgo-post-author > div .text,
+  .single-comment > div .text {
+    padding: 0 10px 0 20px;
+  }
+  .shop-cart-item .value-increment-decrement {
+    width: 100px;
+    padding: 0 5px;
+    display: flex;
+  }
+  .event-vane-date-artist {
+    padding: 50px 20px 0 20px;
+  }
+  .event-detail .event-counter {
+    padding: 38px 20px;
+  }
+  .event-detail .buy-event-ticket {
+    padding: 30px 20px;
+  }
+  .footer-map {
+    height: 100px;
+  }
+  .shop-tab .tab-content {
+    padding: 20px;
+  }
+}

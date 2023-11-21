@@ -1,0 +1,67 @@
+/* Thiết lập font chung cho trang web */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    padding: 5px;
+}
+
+/* Kiểu cho phần giới thiệu */
+.jumbotron {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron h1 {
+    font-size: 36px;
+}
+
+.jumbotron p {
+    font-size: 18px;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #1db954;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #15893d;
+}
+
+/* Kiểu cho danh sách âm nhạc nổi bật */
+.featured-music {
+    margin-top: 30px;
+}
+
+.music-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.music-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.music-card h3 {
+    font-size: 24px;
+}
+
+.music-card p {
+    font-size: 18px;
+    color: #555;
+}
