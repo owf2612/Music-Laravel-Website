@@ -30,6 +30,7 @@
                 <table class="text-gray-200" id="musicTable" class="display">
                     <thead>
                         <tr>
+                            <th class="text">Image</th>
                             <th class="text">Title</th>
                             <th class="text">Artist</th>
                             <th class="text">Genre</th>
@@ -39,6 +40,13 @@
                     <tbody>
                         @foreach ($musics as $music)
                             <tr>
+                                <td>
+                                    @if ($music->image_paths)
+                                        <img src="{{ route('music.image', ['filename' => json_decode($music->image_paths)[0]]) }}" alt="{{ $music->title }}" style="max-width: 155px; max-height: 87px; object-fit: cover;">
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
                                 <td>{{ $music->title }}</td>
                                 <td>{{ $music->artist }}</td>
                                 <td>{{ $music->genre }}</td>

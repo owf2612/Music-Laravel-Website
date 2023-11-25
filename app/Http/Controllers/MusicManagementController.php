@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Music;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 
 class MusicManagementController extends Controller
 {
@@ -59,20 +59,30 @@ class MusicManagementController extends Controller
                     'genre' => $request->input('genre'),
                 ]);
     
-                // Check if a new file was uploaded
-                if ($request->hasFile('file')) {
-                    $file = $request->file('file');
+                // Check if a new image file was uploaded
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
     
-                    // Validate the uploaded file (e.g., file size, file type)
+                    // Validate the uploaded image file (e.g., file size, file type)
     
-                    // Generate a unique file name
-                    $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+                    // Generate a unique image file name
+                    $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
     
-                    // Move the uploaded file to the storage directory
-                    $file->move(storage_path('app/music'), $fileName);
+                    // Move the uploaded image file to the storage directory
+                    $image->move(storage_path('app/music/images'), $imageName);
     
-                    // Update the file path in the music record
-                    $music->file_path = $fileName;
+                    // Delete the previous image file if exists
+                    if ($music->image_paths) {
+                        $previousImages = json_decode($music->image_paths);
+                        foreach ($previousImages as $previousImage) {
+                            if (Storage::exists('music/images/' . $previousImage)) {
+                                Storage::delete('music/images/' . $previousImage);
+                            }
+                        }
+                    }
+    
+                    // Update the image paths in the music record
+                    $music->image_paths = json_encode([$imageName]);
                     $music->save();
                 }
     
@@ -86,8 +96,6 @@ class MusicManagementController extends Controller
             return redirect()->route('music.list')->with('error', 'Music not found');
         }
     }
-
-
 
     public function destroy($id)
     {
@@ -117,14 +125,9 @@ class MusicManagementController extends Controller
                 return redirect()->route('music.list')->with('error', 'Permission denied');
             }
 
-
-
-
-
-
-            return redirect()->route('music.list')->with('success', 'Music deleted successfully.');
-        } else {
-            return redirect()->route('music.list')->with('error', 'Music not found.');
+                return redirect()->route('music.list')->with('success', 'Music deleted successfully.');
+            } else {
+                return redirect()->route('music.list')->with('error', 'Music not found.');
         }
     }
 }
