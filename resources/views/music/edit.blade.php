@@ -24,7 +24,7 @@
                 <br>
 
                 <div class="max-w-xl">
-                    <form method="POST" action="{{ route('music.update', ['id' => $music->id]) }}">
+                <form method="POST" action="{{ route('music.update', ['id' => $music->id]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -44,13 +44,18 @@
                                 required>
                         </div>
 
-                        <div>
-                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300"
-                                for="genre">Genre</label>
-                            <input type="text" name="genre" value="{{ $music->genre }}"
-                                class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full"
-                                required>
-                        </div>
+                            <div>
+                                <label class="block font-medium text-sm text-gray-700 dark:text-gray-300"
+                                    for="genre">Genre</label>
+                                <input type="text" name="genre" value="{{ $music->genre }}"
+                                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full"
+                                    required>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="file">Song File (MP3)</label>
+                                <input type="file" name="file" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full">
+                                <p class="mt-2 text-sm text-gray-500">Upload a new MP3 file for the music (optional).</p>
+                            </div>
                         <br>
                         <div>
                             <button type="submit"

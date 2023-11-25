@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Music;
 
 
-
-
-
 class MusicController extends Controller
 {
     public function create()
@@ -36,15 +33,11 @@ class MusicController extends Controller
             'artist' => $request->input('artist'),
             'genre' => $request->input('genre'),
             'file_path' => $fileName,
-            'user_id' => auth()->user()->id, // Sử dụng user_id để liên kết với người dùng
+            'user_id' => auth()->user()->id, // Use user_id to associate with the user
         ]);
 
         return redirect('/music/create')->with('success', 'Music uploaded successfully');
     }
-
-
-
-
 
     public function index()
     {

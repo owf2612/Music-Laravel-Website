@@ -47,13 +47,44 @@ class MusicManagementController extends Controller
     public function update(Request $request, $id)
     {
         $music = Music::find($id);
-        $music->update([
-            'title' => $request->input('title'),
-            'artist' => $request->input('artist'),
-            'genre' => $request->input('genre'),
-        ]);
-
-        return redirect()->route("music.edit", ['id' => $id])->with('success', 'Music updated successfully.');
+        $userId = auth()->user()->id;
+    
+        if ($music) {
+            // Check if the music record belongs to the current user
+            if ($music->user_id === $userId) {
+                // Update the music details
+                $music->update([
+                    'title' => $request->input('title'),
+                    'artist' => $request->input('artist'),
+                    'genre' => $request->input('genre'),
+                ]);
+    
+                // Check if a new file was uploaded
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+    
+                    // Validate the uploaded file (e.g., file size, file type)
+    
+                    // Generate a unique file name
+                    $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+    
+                    // Move the uploaded file to the storage directory
+                    $file->move(storage_path('app/music'), $fileName);
+    
+                    // Update the file path in the music record
+                    $music->file_path = $fileName;
+                    $music->save();
+                }
+    
+                return redirect()->route("music.edit", ['id' => $id])->with('success', 'Music updated successfully.');
+            } else {
+                // Music record does not belong to the current user
+                return redirect()->route('music.list')->with('error', 'Permission denied');
+            }
+        } else {
+            // Music record not found
+            return redirect()->route('music.list')->with('error', 'Music not found');
+        }
     }
 
 
