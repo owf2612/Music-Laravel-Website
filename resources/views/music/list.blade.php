@@ -42,7 +42,7 @@
                             <tr>
                                 <td>
                                     @if ($music->image_paths)
-                                        <img src="{{ route('music.image', ['filename' => json_decode($music->image_paths)[0]]) }}" alt="{{ $music->title }}" style="max-width: 155px; max-height: 87px; object-fit: cover;">
+                                        <img src="{{ route('music.image', ['filename' => json_decode($music->image_paths)[0]]) }}" alt="{{ $music->title }}" style="max-width: 130px; max-height: 88px; object-fit: cover; display: block;">
                                     @else
                                         No Image
                                     @endif
