@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    //get image file
+    Route::get('/music/image/{filename}', [MusicController::class, 'getImage'])->name('music.image');
+    Route::get('/music/image/{filename}', [DashboardController::class, 'getImage'])->name('music.image');
 
     //get mp 3 file
     Route::get('/ms/{filename}', [DashboardController::class, 'streamMusic'])->name('music.stream');

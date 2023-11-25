@@ -32,4 +32,20 @@ class DashboardController extends Controller
             return response('Audio file not found', 404);
         }
     }
+
+    public function getImage($filename)
+    {
+        $path = storage_path('app/music/images/' . $filename);
+
+        if (file_exists($path)) {
+            $file = Storage::get('music/images/' . $filename);
+
+            $response = Response::make($file, 200);
+            $response->header('Content-Type', 'image/jpeg'); // Update the content type based on the image file type
+
+            return $response;
+        } else {
+            return response('Image not found', 404);
+        }
+    }
 }

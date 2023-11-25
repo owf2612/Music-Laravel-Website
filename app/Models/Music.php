@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Music extends Model
 {
-    protected $fillable = ['title', 'artist', 'genre', 'file_path', 'user_id'];
+    protected $fillable = ['title', 'artist', 'genre', 'file_path', 'image_paths', 'user_id'];
 
     public function user()
     {

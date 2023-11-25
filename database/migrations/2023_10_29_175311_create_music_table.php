@@ -14,6 +14,7 @@ class CreateMusicTable extends Migration
             $table->string('artist');
             $table->string('genre');
             $table->string('file_path');
+            $table->text('image_paths')->nullable();
             $table->unsignedBigInteger('user_id'); // Sử dụng user_id để tham chiếu đến bảng người dùng
             $table->foreign('user_id')->references('id')->on('users'); // Tham chiếu đến trường id trong bảng users
             $table->timestamps();
