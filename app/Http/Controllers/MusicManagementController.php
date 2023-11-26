@@ -83,8 +83,26 @@ class MusicManagementController extends Controller
     
                     // Update the image paths in the music record
                     $music->image_paths = json_encode([$imageName]);
-                    $music->save();
                 }
+    
+                // Check if a new song file was uploaded
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+    
+                    // Validate the uploaded song file (e.g., file size, file type)
+    
+                    // Generate a unique file name
+                    $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+
+                    // Move the uploaded file to the storage directory
+                    $file->move(storage_path('app/music'), $fileName);
+    
+                    // Update the song path in the music record
+                    $music->file_path = $fileName;
+                }
+    
+                // Save the changes
+                $music->save();
     
                 return redirect()->route("music.edit", ['id' => $id])->with('success', 'Music updated successfully.');
             } else {
@@ -96,6 +114,7 @@ class MusicManagementController extends Controller
             return redirect()->route('music.list')->with('error', 'Music not found');
         }
     }
+
 
     public function destroy($id)
     {
