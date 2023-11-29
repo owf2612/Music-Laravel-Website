@@ -10,22 +10,22 @@
                 </a>
                 </div>
 
-<!-- Navigation Links -->
-<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-        {{ __('Dashboard') }}
-    </x-nav-link>
+            <!-- Navigation Links -->
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-nav-link>
 
-    @if(Auth::check() && Auth::user()->isAdmin())
-        <x-nav-link :href="route('music.create')" :active="request()->routeIs('music.create')">
-            {{ __('Music Upload') }}
-        </x-nav-link>
+                @if(Auth::check() && Auth::user()->isAdmin())
+                    <x-nav-link :href="route('music.create')" :active="request()->routeIs('music.create')">
+                        {{ __('Music Upload') }}
+                    </x-nav-link>
 
-        <x-nav-link :href="route('music.list')" :active="request()->routeIs('music.list')">
-            {{ __('Music Management') }}
-        </x-nav-link>
-    @endif
-</div>
+                    <x-nav-link :href="route('music.list')" :active="request()->routeIs('music.list')">
+                        {{ __('Music Management') }}
+                    </x-nav-link>
+                @endif
+            </div>
 
             </div>
 
