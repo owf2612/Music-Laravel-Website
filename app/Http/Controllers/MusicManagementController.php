@@ -118,35 +118,41 @@ class MusicManagementController extends Controller
 
     public function destroy($id)
     {
-        // Tìm bản ghi âm nhạc cần xóa
+        // Find the music record to be deleted
         $music = Music::find($id);
         $userId = auth()->user()->id;
-
+    
         if ($music) {
-
-
-            // Kiểm tra xem user_id của bản ghi có khớp với id của người dùng hiện tại hay không
+    
+            // Check if the user_id of the record matches the id of the current user
             if ($music->user_id === $userId) {
-
-                // Trích xuất đường dẫn tệp từ bản ghi
-                $music = Music::find($id);
+    
+                // Extract file paths from the record
                 $filePath = $music->file_path;
-
-                // Xóa tệp từ thư mục storage\app\music
+                $imagePaths = json_decode($music->image_paths, true);
+    
+                // Delete music file from the storage/app/music/ folder
                 if (file_exists(storage_path('app/music/' . $filePath))) {
                     unlink(storage_path('app/music/' . $filePath));
                 }
-
-                // Sau đó, xóa bản ghi từ cơ sở dữ liệu
+    
+                // Delete image files from the storage/app/music/images/ folder
+                foreach ($imagePaths as $imagePath) {
+                    if (file_exists(storage_path('app/music/images/' . $imagePath))) {
+                        unlink(storage_path('app/music/images/' . $imagePath));
+                    }
+                }
+    
+                // Then, delete the record from the database
                 $music->delete();
             } else {
-                // Bản ghi không thuộc về người dùng hiện tại
+                // The record does not belong to the current user
                 return redirect()->route('music.list')->with('error', 'Permission denied');
             }
-
-                return redirect()->route('music.list')->with('success', 'Music deleted successfully.');
-            } else {
-                return redirect()->route('music.list')->with('error', 'Music not found.');
+    
+            return redirect()->route('music.list')->with('success', 'Music deleted successfully.');
+        } else {
+            return redirect()->route('music.list')->with('error', 'Music not found.');
         }
     }
 }

@@ -12,7 +12,19 @@ class DashboardController extends Controller
     public function index()
     {
         // Lấy danh sách bài hát từ cơ sở dữ liệu
-        $songs = Music::all(); // Điều này lấy tất cả bản ghi nhạc, bạn có thể tùy chỉnh nếu cần.
+        $songs = Music::all(); 
+
+        return view('dashboard', ['songs' => $songs]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $songs = Music::where('title', 'like', "%$query%")
+            ->orWhere('artist', 'like', "%$query%")
+            ->orWhere('genre', 'like', "%$query%")
+            ->get();
 
         return view('dashboard', ['songs' => $songs]);
     }
