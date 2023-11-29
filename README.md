@@ -1,11 +1,11 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://i.imgur.com/c0yxQcD.png" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://i.imgur.com/c0yxQcD.png" width="200" alt="Laravel Logo"></a></p>
 
 ## About Music Laravel Website
 
 Welcome to our music-centric Laravel website, a digital symphony of technology and art. This is a simple Music website using Laravel 10.
 
-![Image](https://imgur.com/undefined.png "Image")
-![Image](https://imgur.com/undefined.png "Image")
+![Image](https://imgur.com/glxxZfJ.png)
+![Image](https://imgur.com/EWrgIbG.png)
 
 ## How install
 
