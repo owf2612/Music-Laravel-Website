@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Music Sound') }}</title>
+        <title>@yield('title', config('app.name', 'Music Sound'))</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,18 +35,38 @@
                 
             </main>
         </div>
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- DataTables -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- DataTables -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    
     <!-- Đoạn mã JavaScript DataTables -->
     <script>
         $(document).ready( function () {
             $('#musicTable').DataTable({
-                "lengthChange": false, // Tắt phần "Show [X] entries"
-                "pageLength": 10 // Mặc định hiển thị 10 dòng một lần
+                "lengthChange": false, // Turn off "Show [X] entries"
+                "pageLength": 10 // By default, displays 10 lines at a time
             });
         } );
     </script>
+
+    <script>
+        $(document).ready(function() {
+            // Get a list of all audio tags
+            const audioPlayers = document.querySelectorAll('.audio-player');
+        
+            // Listen for the event when playback starts
+            audioPlayers.forEach(function(player) {
+                player.addEventListener('play', function() {
+                    audioPlayers.forEach(function(otherPlayer) {
+                        if (otherPlayer !== player && !otherPlayer.paused) {
+                            otherPlayer.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
     </body>
 </html>

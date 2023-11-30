@@ -27,14 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['admin'])->group(function () {
-    // Các tuyến chỉ có thể truy cập bởi admin
-    //get image file
-    Route::get('/music/image/{filename}', [MusicController::class, 'getImage'])->name('music.image');
-    Route::get('/music/image/{filename}', [DashboardController::class, 'getImage'])->name('music.image');
-
-    //get mp 3 file
-    Route::get('/ms/{filename}', [DashboardController::class, 'streamMusic'])->name('music.stream');
-
+    // Routes are only accessible by admin
     Route::get('/music/create', [MusicController::class, 'create'])->name('music.create');
     Route::get('/music/list', [MusicManagementController::class, 'list'])->name('music.list');
     Route::get('/music/edit/{id}', [MusicManagementController::class, 'edit'])->name('music.edit');
@@ -46,15 +39,16 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware('auth')->group(function () {
 
     //get image file
-    Route::get('/music/image/{filename}', [MusicController::class, 'getImage'])->name('music.image');
     Route::get('/music/image/{filename}', [DashboardController::class, 'getImage'])->name('music.image');
-    
-    //get mp 3 file
+
+    //Get mp 3 file
     Route::get('/ms/{filename}', [DashboardController::class, 'streamMusic'])->name('music.stream');
 
+    //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/music/search', [DashboardController::class, 'search'])->name('music.search');
 
+    //Upload music
     Route::get('/music', [MusicController::class, 'index'])->name('music.index');
     Route::post('/music', [MusicController::class, 'store'])->name('music.store');
 
